@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css.css">
+	<script type="text/javascript">
+		var star=document.getElementsByTagName('li');
+		var clickStar=false;
+		var starIndex=-1;
+		$(document).ready(function() {
+			$('li').hover(function() {
+				var waitIndex=$("li").index(this);
+				currentStar(waitIndex);
+			},function() {
+				clear();
+				currentStar(starIndex);
+			})
+
+			$('li').click(function() {
+				clear();
+				starIndex=$("li").index(this);
+				currentStar(starIndex);
+			})
+		})
+
+		function clear() {
+			for (var i=0;i<=5;i++) {
+				$(star[i]).css('background-image','url(star.png)');
+			}
+		}
+
+		function currentStar(indexOfStar) {
+			for (var i=0;i<=indexOfStar;i++) {
+				$(star[i]).css('background-image','url(starfill.png)');
+			}
+		}
+	</script>
+</head>
+<body>
+<div>
+	<div id="star-list">
+		<ul>
+			<li id="star-five"></li>
+			<li id="star-five"></li>
+			<li id="star-five"></li>
+			<li id="star-five"></li>
+			<li id="star-five"></li>
+		</ul>
+	</div>
+	<div id="text-board">
+		<textarea name=""></textarea>
+	</div>
+</div>
+
+</body>
+</html>
