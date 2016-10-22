@@ -15,7 +15,7 @@ class Judge extends CI_Controller {
 		$content=array(
 			'content'=>$data
 			);
-		$this->load->view('Judge', $content);
+		$this->load->view('Judge/Judge', $content);
 	}
 
 	public function inst_cont() 
