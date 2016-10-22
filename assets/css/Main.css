@@ -1,0 +1,58 @@
+html{
+	height:100%;
+	padding: 0px;
+	margin:0px;
+	overflow: hidden;
+}
+body{
+	margin:0px;
+	padding: 0px;
+	height:100%;
+	overflow: scroll;
+	overflow-x: hidden;
+	background-color: white;
+}
+header{
+	background-color: black;
+	margin: 0px auto ;
+}
+#banner{
+	background-color: blue;
+	margin: 0px auto ;
+	height:20px;
+}
+#top{
+	
+}
+#container2{
+	padding: 20px 0;
+	background-color: white;
+}
+#container3{
+	padding: 20px 0;
+	height:400px;
+	background-color: green;
+}
+#container4{
+	padding: 20px 0;
+	height:700px;
+	background-color: white;
+}
+#container5{
+	padding: 20px 0;
+	height:400px;
+	background-color: blue;
+}
+#under{
+	padding: 20px 0;
+	height:100px;
+	background-color: black;
+}
+#down{
+	padding: 20px 0;
+	height:100px;
+	background-color: black;
+}
+img{
+	height:40%;
+}
