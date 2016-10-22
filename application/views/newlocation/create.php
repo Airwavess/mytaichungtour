@@ -1,31 +1,4 @@
-<!-- <h2><?php // echo $title ?></h2>
 
-<?php //echo validation_errors(); ?>
-<form action="<?php // echo site_url("newlocation/create") ?>"  method="POST">
-	
-	
-	<label for="lc_name">景點名稱：</label>
-    <input type="input" name="lc_name" /><br />
-
-    <label for="img_path">圖片路徑：</label>
-    <input type="input" name="img_path" /><br />
-
-    <label for="description">景點敘述：</label>
-    <textarea name="description"></textarea><br />
-
-    <label for="address">景點地址：</label>
-    <input type="input" name="address" /><br />
-
-    <label for="lat">經度：</label>
-    <input type="input" name="lat" /><br />
-
-    <label for="lng">緯度：</label>
-    <input type="input" name="lng" /><br />
-
-    <input type="submit" name="submit" value="新增景點完成" />
-</form>
-
-</form> -->
 
     <div id="wrapper">
 
@@ -50,62 +23,17 @@
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i>景點管理</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i>景點管理<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
+                                    <a href="create">新增景點</a>
                                 </li>
                                 <li>
-                                    <a href="buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grid</a>
+                                    <a href="#">修改景點</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+                        
                         <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -137,9 +65,11 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
+                        	新增景點
                         	<?php echo validation_errors(); ?>
                         </div>
                         <div class="panel-body">
+
                             <div class="row">
                                 <div class="col-lg-6">
                                     <form role="form" method="POST" action="<?=site_url("newlocation/create")?>">
