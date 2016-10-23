@@ -87,19 +87,19 @@ class Migration_Basic_db extends CI_Migration {
          * child_catelog_id: foreign key (int)
          */
         $this->dbforge->add_field(array(
-            'n_id' => array(
+            'st_id' => array(
                 'type' => 'INT',
                 'unsigned' => TRUE,
                 'auto_increment' => TRUE
             ),
-            'n_character' => array(
-                'type' => 'VARCHAR(1)',
+            'st_name' => array(
+                'type' => 'VARCHAR(20)',
             ),
-            'n_location' => array(
+            'st_content' => array(
                 'type' => 'TEXT'
             )
         ));
-        $this->dbforge->add_key('n_id', TRUE);
+        $this->dbforge->add_key('st_id', TRUE);
         $this->dbforge->create_table('Story');
         /*the end of products table*/
     }

@@ -9,17 +9,29 @@ class Story extends CI_Controller {
 	}
 	public function index()
 	{
-		
+		$this->load->view('back/header');
+		$this->load->view('back/navsidebar');
+		$this->load->view('back/footer');
 	}
 
-	public function inst_story() 
+	public function upt_story() 
 	{
-		$this->load->view('Story/inst_story');
+		$this->load->view('back/header');
+		$this->load->view('Story/upt_story');
+		$this->load->view('back/footer');
 	}
 
-	public function inst_db_story() 
+	public function upt_db_story() 
 	{
-		$this->Story_Model->inst_story($_POST);
+		$this->Story_Model->upt_story($_POST);
+		redirect('Story/upt_story','refresh');
+	}
+
+	public function sel_story()
+	{
+		$var=$this->input->POST('story_id');
+		$query=$this->Story_Model->sel_story($var);
+		echo json_encode($query);
 	}
 }
 
