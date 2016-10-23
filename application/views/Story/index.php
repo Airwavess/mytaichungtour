@@ -104,11 +104,11 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
-        <form name="sentMessage" id="contactForm" novalidate>
+        <form id="contactForm" action="<?=site_url('Story/userStory')?>" method="GET">
           <div class="control-group form-group">
             <div class="controls">
               <h1 class="text-center">請輸入你的名字</h1>
-              <input type="text" class="form-control" id="name" placeholder="例如:Alex" maxlength="8" minlength="3" pattern="[A-Za-z]" required>
+              <input type="text" class="form-control" id="name" name="name" placeholder="例如:Alex" required>
             </div>
           </div>
           <button type="submit" class="btn btn-primary" style="width:100%;">下一步</button>
