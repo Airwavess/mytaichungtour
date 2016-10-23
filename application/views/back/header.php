@@ -60,10 +60,10 @@
                             <a href="#"><i class="fa fa-edit fa-fw"></i>景點管理<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="create">新增景點</a>
+                                    <a href="<?=site_url('newlocation/create')?>">新增景點</a>
                                 </li>
                                 <li>
-                                    <a href="#">修改景點</a>
+                                    <a href="<?=site_url('newlocation/index')?>">修改景點</a>
                                 </li>
                             </ul>
                         </li>
@@ -71,7 +71,7 @@
                             <a href="#"><i class="fa fa-edit fa-fw"></i>故事管理<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<?=site_url('Story/story_upt')?>">更新故事</a>
+                                    <a href="<?=site_url('Story/upt_story')?>">更新故事</a>
                                 </li>
                             </ul>
                         </li>

@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
-  	</div>
+</div>
     <!-- /#wrapper -->
->>>>>>> a63c27633b7791adf2b7180ad9d8f97811b4637c
 <!-- jQuery -->
     <script src="<?=base_url('assets/vendor/jquery/jquery.min.js')?>"></script>
 
