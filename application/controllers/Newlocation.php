@@ -13,9 +13,9 @@ class Newlocation extends CI_Controller {
         {
         $data = $this->Newlocation_model->get_location();
         $title = '景點管理';
-
+        $this->load->view('back/header');
         $this->load->view('newlocation/index', array('data' => $data));
-        $this->load->view('newlocation/footer');
+        $this->load->view('back/footer');
         }
 
         public function view($data = NULL)
