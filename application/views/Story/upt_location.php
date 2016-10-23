@@ -50,10 +50,10 @@
                         <div class="col-md-6">
                             <form action="<?=site_url('Story/upt_db_story')?>" method="POST">
                                 <input type="hidden" id="story-category" name="story_id" value="1">
-                                <h2>故事名稱：</h2>
-                                <input type="text" id="story_name" name="story_name" class="form-control" placeholder="故事名稱空白">
-                                <h2>故事內容：</h2>
-                                <textarea class="form-control" id="story_content" rows="9" name="story_content" placeholder="故事內容空白"></textarea><br>
+                                <h2>對應字母：</h2>
+                                <input type="text" id="story_name" name="story_name" class="form-control" placeholder="對應字母空白">
+                                <h2>故事地點：</h2>
+                                <textarea class="form-control" id="story_location" rows="9" name="story_content" placeholder="故事地點空白"></textarea><br>
                                 <input class="btn btn-default" type="submit" value="Submit">
                             </form>
                         </div>

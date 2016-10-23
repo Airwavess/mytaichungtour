@@ -121,7 +121,7 @@
     }
 
     function renderStory() {
-      document.getElementById('story').innerHTML = story_data.story_location[step];
+      document.getElementById('story').innerHTML = story_data.story_location[step]+"</br>"+ story_data.story[step].st_name+"</br>"+ story_data.story[step].st_content;
       console.log(story_data.story_location[step]);
     }
   </script>

@@ -27,13 +27,7 @@ class Story_Model extends CI_Model {
 		return $query->row_array();
 	}
 
-	public function test_inst($data)
-	{
-		$inst_data=array(
-				'test_name'=>$data['name']
-			);
-		$this->db->insert('table_name', $inst_data); 
-	}
+	
 }
 
 /* End of file Story_Model.php */
