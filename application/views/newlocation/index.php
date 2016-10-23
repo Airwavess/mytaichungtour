@@ -16,7 +16,7 @@
                         <div class="panel-body">
 
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
 
                                 <table class="table table-hover">
  								<thead>

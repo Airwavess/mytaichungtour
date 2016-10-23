@@ -9,12 +9,16 @@ class Story extends CI_Controller {
     }
     public function index()
     {
+        $this->load->view('Story/header');
         $this->load->view('Story/index');
+        $this->load->view('Story/footer');
     }
     public function userStory()
     {
         $name = $this->input->get('name');
+        $this->load->view('Story/header');
         $this->load->view('Story/my_story',array('name'=>$name ));
+        $this->load->view('Story/footer');
     }
     public function my_story()
     {
