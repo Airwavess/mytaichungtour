@@ -33,6 +33,9 @@ class Story extends CI_Controller {
 		$query=$this->Story_Model->sel_story($var);
 		echo json_encode($query);
 	}
+	public function user(){
+		$this->load->view('index.php');
+	}
 }
 
 /* End of file Story.php */
