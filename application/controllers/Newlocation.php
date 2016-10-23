@@ -22,8 +22,6 @@ class Newlocation extends CI_Controller {
         {
           $this->load->helper('form');
           $this->load->library('form_validation');
-
-          $data['title'] = '新增景點';
       
           $this->form_validation->set_rules('lc_name', 'lc_name', 'required');
           $this->form_validation->set_rules('img_path', 'img_path', 'required');
@@ -34,7 +32,7 @@ class Newlocation extends CI_Controller {
 
           if ($this->form_validation->run() === FALSE)
           {
-              $this->load->view('back/header.php', $data);
+              $this->load->view('back/header.php');
               $this->load->view('newlocation/create.php');
               $this->load->view('back/footer.php');
 
