@@ -52,4 +52,10 @@ class Newlocation extends CI_Controller {
           $data = $this->Newlocation_model->get_location()->result_array();          
           echo json_encode($data, JSON_UNESCAPED_UNICODE);        
         }
+        //Api
+        public function query(){
+          $q = $this->input->get('q');
+          $data = $this->Newlocation_model->get_location()->result_array();
+          echo json_encode($data, JSON_UNESCAPED_UNICODE);
+        }
 }
