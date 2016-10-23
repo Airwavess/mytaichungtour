@@ -44,6 +44,64 @@ class Migration_Basic_db extends CI_Migration {
         $this->dbforge->add_key('lc_id', TRUE);
         $this->dbforge->create_table('location');
         /*the end of location table*/
+        /**
+         * products table
+         *  
+         * id: primary key, serial number (int)
+         *
+         * img_path: (text)
+         *
+         * description: (text)
+         *
+         * parent_catelog_id: foreign key (int)
+         * 
+         * child_catelog_id: foreign key (int)
+         */
+        $this->dbforge->add_field(array(
+            'n_id' => array(
+                'type' => 'INT',
+                'unsigned' => TRUE,
+                'auto_increment' => TRUE
+            ),
+            'n_character' => array(
+                'type' => 'VARCHAR(1)',
+            ),
+            'n_location' => array(
+                'type' => 'TEXT'
+            )
+        ));
+        $this->dbforge->add_key('n_id', TRUE);
+        $this->dbforge->create_table('name');
+        /*the end of products table*/
+        /**
+         * products table
+         *  
+         * id: primary key, serial number (int)
+         *
+         * img_path: (text)
+         *
+         * description: (text)
+         *
+         * parent_catelog_id: foreign key (int)
+         * 
+         * child_catelog_id: foreign key (int)
+         */
+        $this->dbforge->add_field(array(
+            'st_id' => array(
+                'type' => 'INT',
+                'unsigned' => TRUE,
+                'auto_increment' => TRUE
+            ),
+            'st_name' => array(
+                'type' => 'VARCHAR(20)',
+            ),
+            'st_content' => array(
+                'type' => 'TEXT'
+            )
+        ));
+        $this->dbforge->add_key('st_id', TRUE);
+        $this->dbforge->create_table('Story');
+        /*the end of products table*/
     }
 
     public function down()
