@@ -33,7 +33,7 @@ class Story extends CI_Controller {
         }
         for($i=0;$i<strlen($user_name);$i++)
         {
-            $specific_story=$this->Story_Model->sel_story($sequence_of_story[strlen($user_name)][$i]);
+            $specific_story=$this->Story_Model->sel_story($sequence_of_story[strlen($user_name)-3][$i]);
             array_push($story,$specific_story);
         }
         $story_data=array(

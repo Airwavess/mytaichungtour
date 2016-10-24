@@ -63,6 +63,3 @@
     console.log(story_data.story_location[step]);
   }
 </script>
-</body>
-
-</html>

@@ -10,19 +10,19 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=圖片一');"></div>
+      <div class="fill" style="background-image:url('<?=base_url('assets/img/img2.jpg')?>');"></div>
       <div class="carousel-caption">
         <h2>為你自己創作一個故事吧</h2>
       </div>
     </div>
     <div class="item">
-      <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=圖片二');"></div>
+      <div class="fill" style="background-image:url('<?=base_url('assets/img/img3.jpg')?>');"></div>
       <div class="carousel-caption">
         <h2>為你自己創作一個故事吧#</h2>
       </div>
     </div>
     <div class="item">
-      <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=圖片三');"></div>
+      <div class="fill" style="background-image:url('<?=base_url('assets/img/img4.jpg')?>');"></div>
       <div class="carousel-caption">
         <h2>為你自己創作一個故事吧##</h2>
       </div>
@@ -49,10 +49,50 @@
             <input type="text" class="form-control" id="name" name="name" placeholder="例如:Alex" required>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:100%;">創作故事</button>
+        <button type="button" class="btn btn-primary" style="width:100%;" data-toggle="modal" data-target="#myModal">創作故事</button>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="top: 30vh;">
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title text-center" id="myModalLabel">確認你的名字</h3>
+              </div>
+              <div class="modal-body text-center">
+                <h4 id="modal-name"></h4>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">確認</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </form>
     </div>
   </div>
+  <!--
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 class="page-header">景點</h2>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <span class="fa-stack fa-5x">
+            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+            <i class="fa fa-tree fa-stack-1x fa-inverse"></i>
+          </span>
+        </div>
+        <div class="panel-body">
+          <h4>Service One</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <a class="btn btn-primary" href="#">Learn More</a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div> 
+  -->
   <!-- /.container -->
 
   <!-- jQuery -->
@@ -61,15 +101,14 @@
   <!-- Bootstrap Core JavaScript -->
   <script src="<?=base_url('assets/vendor/bootstrap/js/bootstrap.min.js')?>"></script>
 
-  <!-- Metis Menu Plugin JavaScript -->
-  <script src="<?=base_url('assets/vendor/metisMenu/metisMenu.min.js')?>"></script>
-
-  <!-- Custom Theme JavaScript -->
-  <script src="<?=base_url('assets/scripts/sb-admin-2.js')?>"></script>
-
   <!-- Script to Activate the Carousel -->
   <script>
     $('.carousel').carousel({
       interval: 5000 //changes the speed
+    })
+    $('#myModal').on('shown.bs.modal', function() {
+      $('#myInput').focus()
+      var name = document.getElementById('name').value;
+      document.getElementById('modal-name').innerHTML = name;
     })
   </script>
