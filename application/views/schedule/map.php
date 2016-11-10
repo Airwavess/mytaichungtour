@@ -3,16 +3,18 @@
       /* Jim 2016/11/10 */
       .fun-bar {
         background-color: #505050;
-        z-index:2;position:fixed;
+        z-index:2;
+        position:fixed;
         top:50px;left:0;
         width:100%;
+        min-width: 360px;
       }
 
-      .fun-bar a:hover{
+      .fun-bar a:hover,.fun-bar a:focus{
         color: #000000!important;
       }
 
-      .fun-bar .active a:hover{
+      .fun-bar .active a:hover,.fun-bar .active a:focus{
         color: #FFFFFF!important;
       }
 
@@ -21,8 +23,10 @@
       }
 
       .mapview {
-        height:100vh;
-        top: 0px; 
+        height: 100vh;
+        width: 100%; 
+        top: 0px;
+        left: 0px;
         z-index:1;
       }
 
@@ -32,13 +36,31 @@
         top: 50px;
       }
 
+      .list {
+        z-index: 2;
+        position:absolute;
+        top: 90px;
+        left:0;
+        width: 100vh;
+        height: 80vh;
+      }
+      @media screen and (min-width: 768px) {
+        .list {
+          z-index: 2;
+          position:absolute;
+          top: 90px;
+          left:0;
+          width: 30%;
+          height: 80vh;
+        }
+      }
     </style>
     <div class="container">
         <div class="row">
             <div class="col-md-12 fun-bar">
               <div class="container">
                 <ul class="nav nav-pills" id="fun-bar">
-                    <li><a href="#add">新增地點</a></li>
+                    <li><a href="#add">選擇地點</a></li>
                     <li><a href="#route">路線規劃</a></li>
                     <li><a href="#map">查看地圖</a></li>
                 </ul>
@@ -46,21 +68,17 @@
             </div>
         </div>
     </div>
-    <div id="msg" class="col-md-12"></div>
-    <div class="container">
-      <div class="row">
-          <!--<div class="list-group col-md-3" style="position:absolute;z-index:2;top:60px;left:10px;height:410px;padding-right: 0;">
-              <a href="#" class="list-group-item active">選擇地點</a>
-              <div id="line" style="overflow-y: auto;height:100%;background-color:#fff;"></div>
-              <button type="button" id="more" class="list-group-item" onclick="" style="font-size:20px;background-color:#CCC;">下一頁</button>
-          </div>-->
-          <!--<div id="selectedList" class="list-group col-md-3" style="position:fixed;z-index:1;top:60px;left:370px;height:410px;;padding-right: 0;">
-              <a href="#" class="list-group-item active">已選擇地點</a>
-              <div id="selected" style="overflow-y: auto;height:100%;background-color:#fff;"></div>
-              <button type="button" class="list-group-item" onclick="calculateAndDisplayRoute()" style="font-size:20px;background-color:#CCC;">計算路線</button>
-          </div>-->
-          <div class="col-md-12 mapview" id="View">
-          </div>
+    <!--<div id="msg" class="col-md-12"></div>-->
+
+      <div class="row" style="margin: 0!important;">
+          <div class="col-md-12 View" id="View"></div>
+          <div class="mapview" id="mapView"></div>
        </div>   
-    </div>
+
+    <script src="<?=base_url("assets/scripts/map.js")?>"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeomCbkr7arq7I2GQlw9hrE-zdso8SoVQ&libraries=places&callback=initMap" async defer></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?=base_url('assets/vendor/bootstrap/js/bootstrap.min.js')?>"></script>
     

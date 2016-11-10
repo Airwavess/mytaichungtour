@@ -17,7 +17,7 @@ class Schedule extends CI_Controller {
 
 	public function query(){
 		$q = $this->input->get('q');
-		if($q = 'location'){
+		if(isset($q) && $q = 'location'){
 			$data = $this->Newlocation_model->get_location()->result_array();
 			echo json_encode($data, JSON_UNESCAPED_UNICODE);
 		}else{
