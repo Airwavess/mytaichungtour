@@ -8,7 +8,6 @@ class Newlocation_model extends CI_Model {
             $query = $this->db->get('location');
             return $query;
         }
-        
         $query = $this->db->get_where('location', array('lc_id' => $lc_id));
         return $query;
     }
@@ -39,7 +38,6 @@ class Newlocation_model extends CI_Model {
     
     public function modify($lc_id)
     {
-        
         $data = array(
         'lc_name' => $this->input->post('lc_name'),
         'img_path' => $this->input->post('img_path'),
@@ -48,7 +46,6 @@ class Newlocation_model extends CI_Model {
         'lat' => $this->input->post('lat'),
         'lng' => $this->input->post('lng')
         );
-        
         $this->db->where('lc_id', $lc_id);
         $this->db->update('location',$data);
     }
