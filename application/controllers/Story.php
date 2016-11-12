@@ -26,25 +26,30 @@ class Story extends CI_Controller {
     public function my_story()
     {
         $user_name=$_GET['user_name'];
-        $sequence_of_story=array('267','2367','23567','234567','1234567','12345678');
+        $sequence_of_story=array(
+                '3'=>array('call','crisis','treasure'),
+                '4'=>array('call','assist','crisis','treasure'),
+                '5'=>array('call','assist','test','crisis','treasure'),
+                '6'=>array('call','assist','leave','test','crisis','treasure'),
+                '7'=>array('begin','call','assist','leave','test','crisis','treasure'),
+                '8'=>array('begin','call','assist','leave','test','crisis','treasure','end')
+            );
         $story_location=array();
         $story=array();
-        for($i=0;$i<strlen($_GET['user_name']);$i++)
+        $squence=$sequence_of_story[strlen($user_name)];
+
+        for($i=0;$i<strlen($user_name);$i++) 
         {
-            $location=$this->Story_Model->sel_location($user_name[$i]);
-            array_push($story_location,$location['stl_location']);
+            $query_data=$this->Story_Model->sel_story(strtoupper($user_name[$i]));
+            $story[$i]=$query_data["st_".$squence[$i]];
+            $story_location[$i]=$this->Newlocation_model->getLocationById($i+1)->row_array();
         }
-        for($i=0;$i<strlen($user_name);$i++)
-        {
-            $specific_story=$this->Story_Model->sel_story($sequence_of_story[strlen($user_name)-3][$i]);
-            array_push($story,$specific_story);
-        }
-        $story_data=array(
-        'story_user_name'=>$user_name,
-        'story_location'=>$story_location,
-        'story'=>$story
-        );
-        echo json_encode($story_data, JSON_UNESCAPED_UNICODE);
+        $data=array(
+                'username'=>$user_name,
+                'story'=>$story,
+                'story_location'=>$story_location
+            );
+        echo json_encode($data, JSON_UNESCAPED_UNICODE);
     }
     
     public function upt_story()
