@@ -18,6 +18,15 @@ class Newlocation extends CI_Controller {
           $this->load->view('back/footer');
         }
 
+        public function view()
+        {
+          $data = $this->Newlocation_model->get_location();
+          $this->load->view('LocationView/header');
+          $this->load->view('LocationView/location_view', array('data' => $data));
+          $this->load->view('LocationView/footer');
+        }
+
+
         public function create()
         {
           $this->load->helper('form');

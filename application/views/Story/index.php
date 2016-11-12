@@ -87,29 +87,40 @@
       </div>
     </div>
   </div>
-  <!--
+  
 <div class="row">
-<div class="col-lg-12">
-<h2 class="page-header">景點</h2>
+  <div class="col-lg-12">
+    <h2 class="page-header">景點</h2>
+  </div>
+ 
+    <?php
+    foreach ($data->result() as $row) {
+    ?>
+    <div class="col-md-3 col-sm-6">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <span class="fa-stack fa-5x">
+          <i class="fa fa-circle fa-stack-2x text-primary"></i>
+          <i class="fa fa-tree fa-stack-1x fa-inverse"></i>
+          </span>
+        </div>
+        <div class="panel-body">
+
+          <!-- 景點名 -->
+          <h4><?="$row->lc_name"?></h4>
+          <!-- 景點描述 -->
+          <p><?="$row->description"?></p>
+
+          <a class="btn btn-primary" href="../Newlocation/view">了解更多</a>
+        </div>
+      </div>
+    </div>  
+      <?php  }?>
+    
+     
+  </div>
 </div>
-<div class="col-md-3 col-sm-6">
-<div class="panel panel-default text-center">
-<div class="panel-heading">
-<span class="fa-stack fa-5x">
-<i class="fa fa-circle fa-stack-2x text-primary"></i>
-<i class="fa fa-tree fa-stack-1x fa-inverse"></i>
-</span>
-</div>
-<div class="panel-body">
-<h4>Service One</h4>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-<a class="btn btn-primary" href="#">Learn More</a>
-</div>
-</div>
-</div>
-</div>
-</div>
--->
+
   <!-- /.container -->
 
   <!-- jQuery -->
