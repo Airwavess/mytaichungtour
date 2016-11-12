@@ -76,6 +76,7 @@
 	 										<td>
 	 											<a href="delete?lc_id=<?="$row->lc_id"?>" >
 	 											<button type="button" class="btn btn-danger">刪除</button>
+	 											
 	 										</td>
  										</tr>		
 								<?php  }?>

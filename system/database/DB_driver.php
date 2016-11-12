@@ -64,14 +64,14 @@ abstract class CI_DB_driver {
 	 *
 	 * @var	string
 	 */
-	public $username;
+	public $username='root';
 
 	/**
 	 * Password
 	 *
 	 * @var	string
 	 */
-	public $password;
+	public $password='';
 
 	/**
 	 * Hostname

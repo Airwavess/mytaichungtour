@@ -6,12 +6,15 @@ class Story extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Story_Model');
+        $this->load->model('Newlocation_model');
     }
     public function index()
     {
+        $data = $this->Newlocation_model->get_location();
         $this->load->view('Story/header');
-        $this->load->view('Story/index');
+        $this->load->view('Story/index', array('data' => $data));
         $this->load->view('Story/footer');
+
     }
     public function userStory()
     {
