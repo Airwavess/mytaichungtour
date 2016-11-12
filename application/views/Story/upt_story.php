@@ -111,9 +111,6 @@
                 </select>
               </div>
               <div id="story-all-category" class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary active">
-                  <input type="radio" name="options" id="option1" autocomplete="off" value="begin" checked>現狀
-                </label>
                 <label class="btn btn-primary">
                   <input type="radio" name="options" id="option2" autocomplete="off" value="call">招喚
                 </label>
@@ -131,9 +128,6 @@
                 </label>
                 <label class="btn btn-primary">
                   <input type="radio" name="options" id="option7" autocomplete="off" value="treasure">寶藏
-                </label>
-                <label class="btn btn-primary">
-                  <input type="radio" name="options" id="option8" autocomplete="off" value="end">結局
                 </label>
               </div>
             </div>

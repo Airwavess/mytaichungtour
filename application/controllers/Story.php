@@ -57,13 +57,32 @@ class Story extends CI_Controller {
         redirect('Story/upt_story','refresh');
     }
     
+    public function upt_fixed_story()
+    {
+        $this->load->view('back/header');
+        $this->load->view('Story/upt_fixed_story');
+        $this->load->view('back/footer');
+    }
+
+    public function sel_fixed_story()
+    {
+        $query=$this->Story_Model->sel_fixed_story();
+        echo json_encode($query);
+    }
+
     public function sel_story()
     {
         $ch=$this->input->POST('story_ch');
-        $name=$this->input->POST('story_name');
-        $query=$this->Story_Model->sel_story($ch, $name);
+        $query=$this->Story_Model->sel_story($ch);
         echo json_encode($query);
     }
+
+    public function upt_db_fixed_story()
+    {
+        $this->Story_Model->upt_fixed_story($_POST);
+        redirect('Story/upt_fixed_story','refresh');
+    }
+
     public function upt_location()
     {
         $this->load->view('back/header');

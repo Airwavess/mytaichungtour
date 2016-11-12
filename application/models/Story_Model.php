@@ -19,6 +19,22 @@ class Story_Model extends CI_Model {
         return $query->row_array();
     }
     
+    public function sel_fixed_story()
+    {
+        $this->db->where('stf_id', 1);
+        $query=$this->db->get('story_fixed');
+        return $query->row_array();
+    }
+
+    public function upt_fixed_story($data)
+    {
+        $story_data=array(
+            $data['story_name']=>$data['story_content']
+        );
+        $this->db->where('stf_id', 1);
+        $this->db->update('story_fixed', $story_data);
+    }
+
     public function sel_location($story_character)
     {
         $this->db->where('stl_character', $story_character);
