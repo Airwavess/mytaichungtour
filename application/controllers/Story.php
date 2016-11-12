@@ -40,7 +40,7 @@ class Story extends CI_Controller {
         {
             $query_data=$this->Story_Model->sel_story(strtoupper($user_name[$i]));
             $story[$i]=$query_data["st_".$squence[$i]];
-            $story_location[$i]=$this->Newlocation_model->getLocationById($i+1);
+            $story_location[$i]=$this->Newlocation_model->getLocationById($i+1)->row_array();
         }
         $data=array(
                 'username'=>$user_name,
