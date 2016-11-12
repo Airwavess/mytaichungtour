@@ -6,16 +6,15 @@ class Story_Model extends CI_Model {
     public function upt_story($data)
     {
         $story_data=array(
-        'st_name'=>$data['story_name'],
-        'st_content'=>$data['story_content']
+            $data['story_name']=>$data['story_content']
         );
-        $this->db->where('st_id', $data['story_id']);
+        $this->db->where('st_ch', $data['story_ch']);
         $this->db->update('story', $story_data);
     }
     
-    public function sel_story($id)
+    public function sel_story($ch)
     {
-        $this->db->where('st_id', $id);
+        $this->db->where('st_ch', $ch);
         $query=$this->db->get('story');
         return $query->row_array();
     }

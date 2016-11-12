@@ -59,8 +59,9 @@ class Story extends CI_Controller {
     
     public function sel_story()
     {
-        $var=$this->input->POST('story_id');
-        $query=$this->Story_Model->sel_story($var);
+        $ch=$this->input->POST('story_ch');
+        $name=$this->input->POST('story_name');
+        $query=$this->Story_Model->sel_story($ch, $name);
         echo json_encode($query);
     }
     public function upt_location()

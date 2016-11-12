@@ -87,20 +87,59 @@ class Migration_Basic_db extends CI_Migration {
          * child_catelog_id: foreign key (int)
          */
         $this->dbforge->add_field(array(
-            'st_id' => array(
-                'type' => 'INT',
-                'unsigned' => TRUE,
-                'auto_increment' => TRUE
+            'st_ch' => array(
+                'type' => 'VARCHAR(1)',
             ),
-            'st_name' => array(
-                'type' => 'VARCHAR(20)',
+            'st_call' => array(
+                'type' => 'TEXT'
             ),
-            'st_content' => array(
+            'st_assist' => array(
+                'type' => 'TEXT'
+            ),
+            'st_leave' => array(
+                'type' => 'TEXT'
+            ),
+            'st_test' => array(
+                'type' => 'TEXT'
+            ),
+            'st_crisis' => array(
+                'type' => 'TEXT'
+            ),
+            'st_treasure' => array(
                 'type' => 'TEXT'
             )
         ));
-        $this->dbforge->add_key('st_id', TRUE);
+        $this->dbforge->add_key('st_ch', TRUE);
         $this->dbforge->create_table('story');
+        /*the end of products table*/
+        /**
+         * products table
+         *  
+         * id: primary key, serial number (int)
+         *
+         * img_path: (text)
+         *
+         * description: (text)
+         *
+         * parent_catelog_id: foreign key (int)
+         * 
+         * child_catelog_id: foreign key (int)
+         */
+        $this->dbforge->add_field(array(
+            'stf_id' => array(
+               'type' => 'INT',
+                'unsigned' => TRUE,
+                'auto_increment' => TRUE
+            ),
+            'stf_begin' => array(
+                'type' => 'TEXT'
+            ),
+            'stf_end' => array(
+                'type' => 'TEXT'
+            ),
+        ));
+        $this->dbforge->add_key('stf_id', TRUE);
+        $this->dbforge->create_table('story_fixed');
         /*the end of products table*/
         /**
          * products table
