@@ -111,7 +111,7 @@
           <!-- 景點描述 -->
           <p><?="$row->description"?></p>
 
-          <a class="btn btn-primary" href="../Newlocation/view">了解更多</a>
+          <a class="btn btn-primary" href="Newlocation/view?lc_id=<?="$row->lc_id"?>">了解更多</a>
         </div>
       </div>
     </div>  

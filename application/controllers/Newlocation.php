@@ -20,10 +20,13 @@ class Newlocation extends CI_Controller {
 
         public function view()
         {
-          $data = $this->Newlocation_model->get_location();
+          $lc_id=$this->input->get('lc_id');
+          $data = $this->Newlocation_model->getLocationById($lc_id);
           $this->load->view('LocationView/header');
           $this->load->view('LocationView/location_view', array('data' => $data));
           $this->load->view('LocationView/footer');
+
+          
         }
 
 
