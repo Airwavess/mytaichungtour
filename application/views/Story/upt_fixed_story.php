@@ -60,7 +60,7 @@
           </div>
           <div>
             <form action="<?=site_url('Story/upt_db_fixed_story')?>" method="POST">
-              <input type="hidden" id="story_name" name="story_name" value="1">
+              <input type="hidden" id="story_name" name="story_name" value="stf_begin">
               <h2>故事內容：</h2>
               <textarea class="form-control" id="story_content" rows="9" name="story_content" placeholder="故事內容空白" required></textarea>
               <br>

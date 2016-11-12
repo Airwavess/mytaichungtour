@@ -43,24 +43,24 @@
         }
       });
     })
-    // function getData() {
-    //   $.ajax({
-    //     type: "POST",
-    //     url: "<?=site_url('Story/sel_story')?>",
-    //     dataType: "json",
-    //     data: {
-    //       story_id: 1
-    //     },
-    //     success: function(data) {
-    //       $('#story_content').val(data.st_content);
-    //     },
-    //     error: function(e, a, f) {
-    //       alert(f);
-    //     }
-    //   });
-    // }
+    function getData() {
+      $.ajax({
+        type: "POST",
+        url: "<?=site_url('Story/sel_story')?>",
+        dataType: "json",
+        data: {
+          story_ch: "A"
+        },
+        success: function(data) {
+          $('#story-content').val(data["st_"+story_status]);
+        },
+        error: function(e, a, f) {
+          alert(f);
+        }
+      });
+    }
 
-    // getData();
+    getData();
   })
 </script>
 <div id="page-wrapper">
@@ -134,8 +134,8 @@
           </div>
           <div>
             <form action="<?=site_url('Story/upt_db_story')?>" method="POST">
-              <input type="hidden" id="story-ch" name="story_ch" value="1">
-              <input type="hidden" id="story-name" name="story_name" value="1">
+              <input type="hidden" id="story-ch" name="story_ch" value="A">
+              <input type="hidden" id="story-name" name="story_name" value="st_call">
               <h2>故事內容：</h2>
               <textarea class="form-control" id="story-content" rows="9" name="story_content" placeholder="故事內容空白" required></textarea>
               <br>

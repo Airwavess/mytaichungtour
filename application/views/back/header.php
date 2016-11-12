@@ -76,9 +76,9 @@
                 <li>
                   <a href="<?=site_url('Story/upt_fixed_story')?>">更新現況＆結局</a>
                 </li>
-                <li>
-                  <a href="<?=site_url('Story/upt_location')?>">更新故事地點</a>
-                </li>
+                  <!--<li>
+                    <a href="<?=site_url('Story/upt_location')?>">更新故事地點</a>
+                  </li>-->
               </ul>
             </li>
           </ul>
