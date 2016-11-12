@@ -26,7 +26,7 @@ function initMap() {
     selectArray = [];
     waypts = [];
 
-    directionsDisplay.setMap(map);
+    directionsDisplay.setMap(map); 
 }
 
 
@@ -40,7 +40,7 @@ function pos(lat, lng, i) {
         map.setZoom(14);  
         map.setCenter({ lat: selected.lat, lng: selected.lng - 0.01 });
         selectArray.push(selected);
-        renderSelected();
+        //renderSelected();
     } else {
         for (var i = 0; i < len; i++) {
             if (JSON.stringify(selectArray[i]) == JSON.stringify(selected)) {
@@ -57,12 +57,12 @@ function pos(lat, lng, i) {
                 location: selected,
                 stopover: true   
             });
-            renderSelected()
+            //renderSelected()
         } else {
             var str = '<div class="alert alert-warning alert-dismissible" role="alert">';
             str += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
             str += '<strong>此地點已選取</strong></div>';
-            document.getElementById('msg').innerHTML = str;
+            //document.getElementById('msg').innerHTML = str;
         }
     }
     showSteps();
@@ -83,7 +83,7 @@ function calculateAndDisplayRoute() {
 
     var request = {
         origin: start,
-        destination: start,
+        destination: end,
         travelMode: google.maps.TravelMode.WALKING,
         waypoints: waypts
 
@@ -135,14 +135,23 @@ function renderSelected() {
 
     for (var i = 0; i < selectArray.length; i++) {
         var chr = String.fromCharCode(65 + i);
-        var title = data[selectArray[i].i].name;
-        var adddress = data[selectArray[i].i].formatted_address;
-        var str = str + '<a href="#" class="list-group-item"><span class="badge">' + chr + '</span>' + title + '<br>' + adddress + '</a>';
+        var title = data[selectArray[i].i].lc_name;
+        var adddress = data[selectArray[i].i].address;
+        var lat = data[selectArray[i].i].lat;
+        var lng = data[selectArray[i].i].lng;
+        var str = str + '<a href="#" class="list-group-item" onclick="displayStep('+lat+','+ lng +')"><span class="badge">' + chr + '</span>' + title + '<br>' + adddress + '</a>';
     }
     node.innerHTML = str;
 
     if (str.length > 0)
         document.getElementById("selectedList").style.display = "block";
+
+    calculateAndDisplayRoute()
+}
+
+function displayStep(lat, lng){
+    map.setCenter({ lat: lat, lng: lng- 0.01 });
+    map.setZoom(14);
 }
 
 
@@ -159,7 +168,8 @@ function RouteView(Anchor) {
 
     function selected(){
         var View = document.getElementById('View')
-        View.innerHTML = "<div id='selectedList' class='list-group col-md-3' style='position:fixed;z-index:1;top:60px;left:370px;height:410px;;padding-right: 0;'><a href='#' class='list-group-item active'>已選擇地點</a><div id='selected' style='overflow-y: auto;height:100%;background-color:#fff;'></div><button type='button' class='list-group-item' onclick='calculateAndDisplayRoute()' style='font-size:20px;background-color:#CCC;'>計算路線</button></div>"
+        View.innerHTML = "<div id='selectedList' class='list-group col-md-3 list' ><a href='#' class='list-group-item active'>已選擇地點</a><div id='selected' style='overflow-y: auto;height:100%;background-color:#fff;'></div></div>"
+        renderSelected()
     }
 
     RouteViewObj.add = add
