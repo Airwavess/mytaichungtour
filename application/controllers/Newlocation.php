@@ -34,54 +34,119 @@ class Newlocation extends CI_Controller {
         {
           $this->load->helper('form');
           $this->load->library('form_validation');
-      
-          $this->form_validation->set_rules('lc_name', 'lc_name', 'required');
-          $this->form_validation->set_rules('img_path', 'img_path', 'required');
-          $this->form_validation->set_rules('description', 'description', 'required');
-          $this->form_validation->set_rules('address', 'address', 'required');
-          $this->form_validation->set_rules('lat', 'lat', 'required');
-          $this->form_validation->set_rules('lng', 'lng', 'required');
+          
+          $this->form_validation->set_rules('lc_name', '<strong>景點名稱</strong>', 'required');
+          if (empty($_FILES['imgFile']['name']))       
+          {
+            $this->form_validation->set_rules('imgFile', '<strong>圖片上傳</strong>', 'required');       
+          }
+          $this->form_validation->set_rules('description', '<strong>景點敘述</strong>', 'required');
+          $this->form_validation->set_rules('address', '<strong>景點地址</strong>', 'required');
+          $this->form_validation->set_rules('lat', '<strong>經度</strong>', 'required');
+          $this->form_validation->set_rules('lng', '<strong>緯度</strong>', 'required');
+          $this->form_validation->set_message('required', '%s 此欄位必填');
+
+
+          $config['upload_path'] = './assets/uploads/location/';
+          $config['allowed_types'] = 'png|jpg|jpeg';
+          $config['encrypt_name']=TRUE;
+          // 載入上傳函式庫
+          $this->load->library('upload',$config); 
+          $this->upload->initialize($config);
+
 
           if ($this->form_validation->run() === FALSE)
           {
               $this->load->view('back/header.php');
               $this->load->view('newlocation/create.php');
               $this->load->view('back/footer.php');
-
           }
           else
           {
-              $this->Newlocation_model->set_news();
-              redirect(site_url("newlocation/index"));
+              if(!$this->upload->do_upload("imgFile")){
+                echo $this->upload->display_errors();
+              }else{
+                $upload_data = $this->upload->data();
+                $file_name = $upload_data['file_name'];
+                $img_path = $file_name;
+
+                $data = array(
+                  'lc_name' => $this->input->post('lc_name'),
+                  'img_path' => $img_path,
+                  'description' => $this->input->post('description'),
+                  'address' => $this->input->post('address'),
+                  'lat' => $this->input->post('lat'),
+                  'lng' => $this->input->post('lng')
+                );
+
+                $this->Newlocation_model->add_location($data);
+                redirect(site_url("newlocation/index"));
+              }
           }
         }
         public function modify()
         {
-          $lc_id=$this->input->get('lc_id');
-          $this->form_validation->set_rules('lc_name', 'lc_name', 'required');
-          $this->form_validation->set_rules('img_path', 'img_path', 'required');
-          $this->form_validation->set_rules('description', 'description', 'required');
-          $this->form_validation->set_rules('address', 'address', 'required');
-          $this->form_validation->set_rules('lat', 'lat', 'required');
-          $this->form_validation->set_rules('lng', 'lng', 'required');
+          $this->load->helper('form');
+          $this->load->library('form_validation');
+          
+          $this->form_validation->set_rules('lc_name', '<strong>景點名稱</strong>', 'required');
+          $this->form_validation->set_rules('description', '<strong>景點敘述</strong>', 'required');
+          $this->form_validation->set_rules('address', '<strong>景點地址</strong>', 'required');
+          $this->form_validation->set_rules('lat', '<strong>經度</strong>', 'required');
+          $this->form_validation->set_rules('lng', '<strong>緯度</strong>', 'required');
+          $this->form_validation->set_message('required', '%s 此欄位必填');
+
+
+          $config['upload_path'] = './assets/uploads/location/';
+          $config['allowed_types'] = 'png|jpg|jpeg';
+          $config['encrypt_name']=TRUE;
+          // 載入上傳函式庫
+          $this->load->library('upload',$config); 
+          $this->upload->initialize($config);
+          if(null !== $this->input->get('lc_id')){
+            $lc_id = $this->input->get('lc_id'); 
+           }else if(null !==$this->input->post('lc_id')){
+            $lc_id = $this->input->post('lc_id'); 
+          }else{
+            return "Errrrrrrrrrrrrr";
+          }
 
           if ($this->form_validation->run() === FALSE)
           {
-          
-          $data = $this->Newlocation_model->getLocationById($lc_id);   
-          $this->load->view('back/header');
-          $this->load->view('newlocation/modify', array('data' => $data));
-          $this->load->view('back/footer');
-
+            $data = $this->Newlocation_model->getLocationById($lc_id);   
+            $this->load->view('back/header');
+            $this->load->view('newlocation/modify', array('data' => $data));
+            $this->load->view('back/footer');
           }
           else
           {
-            $lc_id = $this->input->post('lc_id');    
-            $this->Newlocation_model->modify($lc_id);
-            redirect(site_url("newlocation/index"));
-              
-          }
+            if (!empty($_FILES['imgFile']['name']))       
+            {
+              if(!$this->upload->do_upload("imgFile")){
+                echo $this->upload->display_errors();
+              }else{
+                $upload_data = $this->upload->data();
+                $file_name = $upload_data['file_name'];
+                $img_path = $file_name;
+              }
+            }else{
+              $data = $this->Newlocation_model->getLocationById($lc_id)->row();
+              $img_path = $data->img_path;
+            }
+            
+            $data = array(
+              'lc_name' => $this->input->post('lc_name'),
+              'img_path' => $img_path,
+              'description' => $this->input->post('description'),
+              'address' => $this->input->post('address'),
+              'lat' => $this->input->post('lat'),
+              'lng' => $this->input->post('lng')
+            );
 
+            $lc_id = $this->input->post('lc_id');    
+            $this->Newlocation_model->modify($lc_id,$data);
+            redirect(site_url("newlocation/index"));
+          }       
         }
 
         public function delete()

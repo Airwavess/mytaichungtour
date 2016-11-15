@@ -12,21 +12,8 @@ class Newlocation_model extends CI_Model {
         return $query;
     }
     
-    public function set_news()
+    public function add_location($data)
     {
-        $this->load->helper('url');
-        
-        
-        
-        $data = array(
-        'lc_name' => $this->input->post('lc_name'),
-        'img_path' => $this->input->post('img_path'),
-        'description' => $this->input->post('description'),
-        'address' => $this->input->post('address'),
-        'lat' => $this->input->post('lat'),
-        'lng' => $this->input->post('lng')
-        );
-        
         return $this->db->insert('location', $data);
     }
     public function getLocationById($lc_id)
@@ -36,18 +23,10 @@ class Newlocation_model extends CI_Model {
         return $query;
     }
     
-    public function modify($lc_id)
+    public function modify($lc_id,$data)
     {
-        $data = array(
-        'lc_name' => $this->input->post('lc_name'),
-        'img_path' => $this->input->post('img_path'),
-        'description' => $this->input->post('description'),
-        'address' => $this->input->post('address'),
-        'lat' => $this->input->post('lat'),
-        'lng' => $this->input->post('lng')
-        );
         $this->db->where('lc_id', $lc_id);
-        $this->db->update('location',$data);
+        return $this->db->update('location',$data);
     }
     
     public function delete_location($lc_id)
