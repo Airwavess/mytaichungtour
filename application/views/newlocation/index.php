@@ -23,7 +23,7 @@
 	 								<tr>
 		 								<th>#</th>	
 		 								<th>景點名稱</th>
-		 								<th>圖片路徑</th>
+		 								<th>圖片</th>
 		 								<th>景點描述</th>
 		 								<th>景點地址</th>
 		 								<th>經度</th>
@@ -49,7 +49,7 @@
 	 										</td>
 	 										<!-- 景點圖片 -->
 	 										<td>
-	 											<?="$row->img_path"?>
+	 											<img src='<?=base_url('assets/uploads/location/')?><?="$row->img_path"?>' width="50%"/>
 	 										</td>
 	 										<!-- 景點描述 -->
 	 										<td>
