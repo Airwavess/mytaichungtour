@@ -18,7 +18,7 @@ class Story_Model extends CI_Model {
         $query=$this->db->get('story');
         return $query->row_array();
     }
-    
+
     public function sel_fixed_story()
     {
         $this->db->where('stf_id', 1);
