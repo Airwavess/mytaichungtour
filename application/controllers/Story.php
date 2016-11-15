@@ -36,14 +36,29 @@ class Story extends CI_Controller {
             );
         $story_location=array();
         $story=array();
-        $squence=$sequence_of_story[strlen($user_name)];
+        $sequence=$sequence_of_story[strlen($user_name)];
+        $query_data=$this->Story_Model->sel_fixed_story();
+        array_push($story,$query_data['stf_begin']);
+        
 
         for($i=0;$i<strlen($user_name);$i++) 
         {
-            $query_data=$this->Story_Model->sel_story(strtoupper($user_name[$i]));
-            $story[$i]=$query_data["st_".$squence[$i]];
-            $story_location[$i]=$this->Newlocation_model->getLocationById($i+1)->row_array();
+            if(strcmp($sequence[$i],'begin')==0 || strcmp($sequence[$i],'end')==0)
+            {
+                $query_data=$this->Newlocation_model->getLocationById($i+1)->row_array();
+                array_push($story_location,$query_data);
+            }
+            else
+            {
+                $query_data=$this->Story_Model->sel_story(strtoupper($user_name[$i]));
+                array_push($story,$query_data["st_".$sequence[$i]]);
+                array_push($story_location,$this->Newlocation_model->getLocationById($i+1)->row_array());
+            }
         }
+
+        $query_data=$this->Story_Model->sel_fixed_story();
+        array_push($story,$query_data['stf_end']);
+
         $data=array(
                 'username'=>$user_name,
                 'story'=>$story,
