@@ -10,7 +10,7 @@ class Schedule extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('Schedule/header');
+		$this->load->view('Story/header');
 		$this->load->view('Schedule/map');
 		$this->load->view('Schedule/footer');
 	}

@@ -22,9 +22,9 @@ class Newlocation extends CI_Controller {
         {
           $lc_id=$this->input->get('lc_id');
           $data = $this->Newlocation_model->getLocationById($lc_id);
-          $this->load->view('LocationView/header');
-          $this->load->view('LocationView/location_view', array('data' => $data));
-          $this->load->view('LocationView/footer');
+          $this->load->view('Story/header');
+          $this->load->view('newlocation/location_view', array('data' => $data));
+          $this->load->view('Story/footer');
 
           
         }
