@@ -1,6 +1,14 @@
     <style>
       /* This is stylesheet */
       /* Jim 2016/11/10 */
+      body {
+        margin:0;
+        padding:0;
+        height:100vh;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        font-family: Microsoft JhengHei;
+      }
       .fun-bar {
         background-color: #505050;
         z-index:2;

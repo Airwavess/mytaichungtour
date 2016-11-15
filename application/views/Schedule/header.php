@@ -29,7 +29,7 @@
 
 </head>
 
-<body style="margin:0;padding:0;height:100vh;overflow-y: hidden;overflow-x: hidden;font-family: Microsoft JhengHei;">
+<body style="">
 
   <!-- Navigation -->
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -47,6 +47,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
+
           <li>
             <a href="#">會員登入</a>
           </li>
