@@ -88,7 +88,7 @@
     </div>
   </div>
   
-<div class="row">
+<div class="row" id="locatoin">
   <div class="col-lg-12">
     <h2 class="page-header">景點</h2>
   </div>
@@ -161,3 +161,10 @@
 
     document.getElementsByClassName('ui-loader').innerHTML = " ";
   </script>
+  <style>
+    @media screen and (max-width: 768px) {
+      #locatoin {
+        display: none;
+      }
+    }
+  </style>
