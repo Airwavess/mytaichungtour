@@ -92,7 +92,7 @@
   }
 
   var map;
-   var makerArray = [];
+  var makerArray = [];
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
       center: { lat: 24.140793, lng: 120.676346 },
@@ -121,8 +121,15 @@
         renderStory()
     }
 
+    function route(){
+      var View = document.getElementById('View')
+      View.innerHTML = '<p id="story" class="lead"></p>'
+      renderStory()
+    }
+
     RouteViewObj.map = map
     RouteViewObj.story = story
+    RouteViewObj.route = route
 
     return RouteViewObj 
   }
@@ -162,6 +169,9 @@
             Route(Anchor)
         })
 
+      }
+      if(fun_bar_li[0].getAttribute("class") != "active"){
+        fun_bar_li[0].className += "active"
       }
   }
 
