@@ -16,6 +16,11 @@ class Story extends CI_Controller {
         $this->load->view('Story/footer');
 
     }
+    public function test()
+    {
+        $a="h";
+        echo ord(strtoupper($a[0]))-65;
+    }
     public function userStory()
     {
         $name = $this->input->get('name');
@@ -37,22 +42,48 @@ class Story extends CI_Controller {
         $story_location=array();
         $story=array();
         $sequence=$sequence_of_story[strlen($user_name)];
+
         $query_data=$this->Story_Model->sel_fixed_story();
         array_push($story,$query_data['stf_begin']);
-        
-
-        for($i=0;$i<strlen($user_name);$i++) 
+        if(strlen($user_name)<=6 && strlen($user_name)>=3) 
         {
-            if(strcmp($sequence[$i],'begin')==0 || strcmp($sequence[$i],'end')==0)
-            {
-                $query_data=$this->Newlocation_model->getLocationById($i+1)->row_array();
-                array_push($story_location,$query_data);
-            }
-            else
+            $query_data=$this->Newlocation_model->getLocationById(1)->row_array();
+            array_push($story_location,$query_data);
+
+            for($i=0;$i<strlen($user_name);$i++) 
             {
                 $query_data=$this->Story_Model->sel_story(strtoupper($user_name[$i]));
                 array_push($story,$query_data["st_".$sequence[$i]]);
-                array_push($story_location,$this->Newlocation_model->getLocationById($i+1)->row_array());
+                $query_data=$this->Newlocation_model->getLocationById(ord(strtoupper($user_name[$i]))-64)->row_array();
+                array_push($story_location,$query_data);
+            }
+            $query_data=$this->Newlocation_model->getLocationById(1)->row_array();
+            array_push($story_location,$query_data);
+        }
+        elseif(strlen($user_name)==7)
+        {
+            for($i=0;$i<strlen($user_name);$i++) 
+            {
+                if($i!=0)
+                {
+                    $query_data=$this->Story_Model->sel_story(strtoupper($user_name[$i]));
+                    array_push($story,$query_data["st_".$sequence[$i]]);
+                }
+                array_push($story_location,$this->Newlocation_model->getLocationById(ord(strtoupper($user_name[$i]))-64)->row_array());
+            }
+            $query_data=$this->Newlocation_model->getLocationById(1)->row_array();
+            array_push($story_location,$query_data);
+        }
+        else
+        {
+            for($i=0;$i<strlen($user_name);$i++) 
+            {
+                if($i>=1 && $i<=6)
+                {
+                    $query_data=$this->Story_Model->sel_story(strtoupper($user_name[$i]));
+                    array_push($story,$query_data["st_".$sequence[$i]]);
+                }
+                array_push($story_location,$this->Newlocation_model->getLocationById(ord(strtoupper($user_name[$i]))-64)->row_array());
             }
         }
 
@@ -64,6 +95,7 @@ class Story extends CI_Controller {
                 'story'=>$story,
                 'story_location'=>$story_location
             );
+        
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
     }
     
