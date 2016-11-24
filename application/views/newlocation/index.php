@@ -69,12 +69,12 @@
 	 										</td>
 	 										<!-- 修改 -->
 	 										<td>
-	 											<a href="modify?lc_id=<?="$row->lc_id"?>" >
+	 											<a href="newlocation/modify?lc_id=<?="$row->lc_id"?>" >
 	 											<button type="button" class="btn btn-warning">修改</button>
 	 										</td>
 	 										<!-- 刪除 -->
 	 										<td>
-	 											<a href="delete?lc_id=<?="$row->lc_id"?>" >
+	 											<a href="newlocation/delete?lc_id=<?="$row->lc_id"?>" >
 	 											<button type="button" class="btn btn-danger">刪除</button>
 	 											
 	 										</td>
