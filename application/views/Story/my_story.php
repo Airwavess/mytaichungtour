@@ -30,10 +30,11 @@
         white-space: -o-pre-wrap; /* Opera 7 */
         word-wrap: break-word; /* Internet Explorer 5.5+ */
         border: 0px ;
-        font-size: 18px;
+        font-size: 20px;
         font-family: Microsoft JhengHei;
         overflow: hidden;
         padding: 0;
+        background-color: #ffffff;
       }
       @media screen and (max-width: 768px) {
         p pre {
