@@ -120,10 +120,10 @@
       }
       btn += '<button type="submit" class="btn btn-primary" style="width:100%;margin:5px 0;" onclick="Next_step()">下一步</button>'
     }else{
-      btn = '<a href="#"  class="btn btn-primary" style="width:100%;margin:5px 0;">分享你/妳的故事</a><a href="/"  class="btn btn-primary" style="width:100%;margin:5px 0;" >回首頁</a>'
+      btn = '<div class="btn btn-primary" style="width:100%;margin:5px 0;color: #FFFFFF;" data-href="http://mytaichungtour.lionfree.net/index.php/Story/userStory?name='+$('#name').text()+'" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fmytaichungtour.lionfree.net%2Findex.php%2FStory%2FuserStory%3Fname%3D'+$('#name').text()+'%23story&amp;src=sdkpreparse"  style="width:100%;margin:5px 0;color: #FFFFFF;display:inline-block;">分享你/妳的故事</a></div><a href="/"  class="btn btn-primary" style="width:100%;margin:5px 0;" >回首頁</a>'
     }
 
-    document.getElementById('story').innerHTML = '<pre>'+story_data.story[step] + '<pre>' + btn;
+    document.getElementById('story').innerHTML = '<pre>'+story_data.story[step] + '</pre>' + btn;
     document.getElementById('storyLocation').innerHTML = story_data.story_location[step].lc_name;
     lat1 = story_data.story_location[step].lat
     lng1 = story_data.story_location[step].lng
@@ -284,3 +284,11 @@
   getAnchor()
   Route('#story')
 </script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=193945007698383";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
