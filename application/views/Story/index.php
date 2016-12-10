@@ -5,28 +5,35 @@
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+    <li data-target="#myCarousel" data-slide-to="4"></li>
+    <li data-target="#myCarousel" data-slide-to="5"></li>
+    <li data-target="#myCarousel" data-slide-to="6"></li>
+    <li data-target="#myCarousel" data-slide-to="7"></li>
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" id="myCarousel">
     <div class="item active">
-      <div class="fill" style="background-image:url('<?=base_url('assets/img/img2.jpg')?>');"></div>
+      <div class="fill" style="background-image:url('<?=base_url('assets/img/begin.jpg')?>');"></div>
       <div class="carousel-caption">
         <h2>為你自己創作一個故事吧</h2>
       </div>
     </div>
+    <?php
+      $img_name=array('call','assist','leave','test','crisis','treasure','end');
+      for($i=0;$i<count($img_name);$i++) {
+    ?>
     <div class="item">
-      <div class="fill" style="background-image:url('<?=base_url('assets/img/img3.jpg')?>');"></div>
+      <div class="fill" style="background-image:url('<?=base_url('assets/img/'.$img_name[$i].'.jpg')?>');"></div>
       <div class="carousel-caption">
-        <h2>為你自己創作一個故事吧#</h2>
+        <h2>為你自己創作一個故事吧</h2>
       </div>
     </div>
-    <div class="item">
-      <div class="fill" style="background-image:url('<?=base_url('assets/img/img4.jpg')?>');"></div>
-      <div class="carousel-caption">
-        <h2>為你自己創作一個故事吧##</h2>
-      </div>
-    </div>
+    <?php
+      }
+    ?>
+
   </div>
 
   <!-- Controls -->
