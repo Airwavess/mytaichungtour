@@ -100,18 +100,13 @@
       <div class="panel panel-default text-center">
         <div class="panel-heading">
           <span class="fa-stack fa-5x">
-          <i class="fa fa-circle fa-stack-2x text-primary"></i>
-          <i class="fa fa-tree fa-stack-1x fa-inverse"></i>
+          <img src="<?=site_url('assets/uploads/location/')?><?="$row->img_path"?>" height="120" width="160"
+           border="0">
           </span>
         </div>
         <div class="panel-body">
-
           <!-- 景點名 -->
           <h4><?="$row->lc_name"?></h4>
-          <!-- 景點描述 -->
-          <p><?="$row->description"?></p>
-
-          <a class="btn btn-primary" href="<?=site_url('Newlocation/view')?>?lc_id=<?="$row->lc_id"?>">了解更多</a>
         </div>
       </div>
     </div>  
@@ -120,6 +115,7 @@
      
   </div>
 </div>
+
 
   <!-- /.container -->
 
