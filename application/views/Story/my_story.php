@@ -54,8 +54,18 @@
         </ul>
       </div> 
     </div>
+  </div>
+</div>
+<header id="myCarousel" class="carousel slide">
+  <div class="carousel-inner" id="myCarousel">
+    <div class="item active" id="story_image">
+    </div>
+  </div>
+</header>
+<div class="container" id="letitbig">
+  <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <h2 class="text-center page-header"  style="padding-top:20px;">這是屬於<span id="name"><?=$name?></span>的故事</h2>
+      <h2 class="text-center page-header"  id="header-name" style="padding-top:20px;">這是屬於<span id="name"><?=$name?></span>的故事</h2>
       <h3 id="storyLocation"></h3>
       <div id="View"><p id="story" class="lead"><button type="submit" class="btn btn-primary" style="width:100%;margin-bottom:20px;" onclick="Next_step()">下一步</button></p></div>
     </div>
@@ -84,7 +94,6 @@
       success: function(data) {
         story_data = data;
         MaxStep = story_data.story_location.length;
-        console.log(data)
         renderStory();
       },
       error: function(e, a, f) {
@@ -92,12 +101,20 @@
       }
     });
   })
+  function Totop() {
+    var $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+    $body.animate({
+      scrollTop: 0
+    }, 600);
 
+    return false;
+  }
   function Next_step() {
     if (step < MaxStep - 1) {
       step = step + 1;
       renderStory();
     }
+    Totop()
   }
 
   function Pre_step() {
@@ -105,6 +122,7 @@
       step = step - 1;
       renderStory();
     }
+    Totop()
   }
 
   var lat1;
@@ -116,32 +134,29 @@
     var btn = ''
     if(step != MaxStep-1){
       if(step>0){
-        btn = '<button type="submit" class="btn btn-primary" style="width:100%;margin:5px 0;" onclick="Pre_step()">上一步</button>'
+        btn = '<button type="submit" class="btn btn-primary" style="width:48%;margin:5px 1px;" onclick="Pre_step()">上一步</button>'
       }
-      btn += '<button type="submit" class="btn btn-primary" style="width:100%;margin:5px 0;" onclick="Next_step()">下一步</button>'
+      btn += '<button type="submit" class="btn btn-primary" style="width:48%;margin:5px 1px;" onclick="Next_step()">下一步</button>'
     }else{
       btn = '<div class="btn btn-primary" style="width:100%;margin:5px 0;color: #FFFFFF;" data-href="http://mytaichungtour.lionfree.net/index.php/Story/userStory?name='+$('#name').text()+'" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fmytaichungtour.lionfree.net%2Findex.php%2FStory%2FuserStory%3Fname%3D'+$('#name').text()+'%23story&amp;src=sdkpreparse"  style="width:100%;margin:5px 0;color: #FFFFFF;display:inline-block;">分享你/妳的故事</a></div><a href="/"  class="btn btn-primary" style="width:100%;margin:5px 0;" >回首頁</a>'
     }
-
+    var url = '/mytaichungtour/assets/img/'+story_data.story_img[step];
     document.getElementById('story').innerHTML = '<pre>'+story_data.story[step] + '</pre>' + btn;
     document.getElementById('storyLocation').innerHTML = story_data.story_location[step].lc_name;
+    document.getElementById('story_image').innerHTML =  '<div class="fill" style="background-image:url('+url+')"></div>';
+    document.getElementById('header-name').style.display="block";
+    document.getElementById('myCarousel').style.display="block";
+    document.getElementById('letitbig').style.overflow="";
+    document.getElementById('letitbig').style.height="100%";
+    document.getElementById('letitbig').style.padding="0 15px";
+
     lat1 = story_data.story_location[step].lat
     lng1 = story_data.story_location[step].lng
 
     if(step>0){
       lat2 = story_data.story_location[step-1].lat
       lng2 = story_data.story_location[step-1].lng
-    }
-    console.log(story_data.story[step]);    
-
-    console.log(step)
-    console.log(MaxStep)
-    
-    console.log(lat1)
-    console.log(lng1)
-    console.log(lat2)
-    console.log(lng2)
-    
+    } 
   }
 
   var map;
@@ -172,10 +187,6 @@
     for (var i = 0; i < markerArray.length; i++) {
       markerArray[i].setMap(null);
     }
-    console.log(lat1)
-    console.log(lng1)
-    console.log(lat2)
-    console.log(lng2)
 
     directionsService.route({
       origin: { lat: parseFloat(lat2), lng: parseFloat(lng2) },
@@ -216,8 +227,13 @@
     var RouteViewObj = new Object() 
     
     function map(data){
+        document.getElementById('letitbig').style.overflow="hidden";
+        document.getElementById('letitbig').style.height="90vh";
+        document.getElementById('letitbig').style.padding="0";
+        document.getElementById('header-name').style.display="none"
+        document.getElementById('myCarousel').style.display="none"
         var View = document.getElementById('View')
-        View.innerHTML = '<div id="map" style="width: 100%; height:40vh;margin-bottom:20px;"></div>'
+        View.innerHTML = '<div id="map" style="width: 100%; height:120vh;margin-bottom:20px;top:0px;"></div>'
         initMap()
     }
 
@@ -256,7 +272,6 @@
 
   function getAnchor(){
     var fun_bar_li = document.getElementById('fun-bar').children
-    console.log(fun_bar_li)
     var Anchor;
     for(var i = 0; i < fun_bar_li.length; i++){
         fun_bar_li[i].addEventListener("click", function(){

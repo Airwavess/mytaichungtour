@@ -50,12 +50,6 @@
           <li>
             <a href="<?=site_url('Schedule')?>">我的行程</a>
           </li>
-          <li>
-            <a href="#">會員登入</a>
-          </li>
-          <li>
-            <a href="#">使用說明</a>
-          </li>
         </ul>
       </div>
       <!-- /.navbar-collapse -->
