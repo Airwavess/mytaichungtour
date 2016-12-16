@@ -41,6 +41,7 @@ class Story extends CI_Controller {
             );
         $story_location=array();
         $story=array();
+        $story_img=array();
         $sequence=$sequence_of_story[strlen($user_name)];
 
         $query_data=$this->Story_Model->sel_fixed_story();
@@ -49,16 +50,18 @@ class Story extends CI_Controller {
         {
             $query_data=$this->Newlocation_model->getLocationById(1)->row_array();
             array_push($story_location,$query_data);
-
+            array_push($story_img,'begin.jpg');
             for($i=0;$i<strlen($user_name);$i++) 
             {
                 $query_data=$this->Story_Model->sel_story(strtoupper($user_name[$i]));
                 array_push($story,$query_data["st_".$sequence[$i]]);
                 $query_data=$this->Newlocation_model->getLocationById(ord(strtoupper($user_name[$i]))-64)->row_array();
                 array_push($story_location,$query_data);
+                array_push($story_img,$sequence[$i].'.jpg');
             }
             $query_data=$this->Newlocation_model->getLocationById(1)->row_array();
             array_push($story_location,$query_data);
+            array_push($story_img,'end.jpg');
         }
         elseif(strlen($user_name)==7)
         {
@@ -70,9 +73,11 @@ class Story extends CI_Controller {
                     array_push($story,$query_data["st_".$sequence[$i]]);
                 }
                 array_push($story_location,$this->Newlocation_model->getLocationById(ord(strtoupper($user_name[$i]))-64)->row_array());
+                array_push($story_img,$sequence[$i].'.jpg');
             }
             $query_data=$this->Newlocation_model->getLocationById(1)->row_array();
             array_push($story_location,$query_data);
+            array_push($story_img,'end.jpg');
         }
         else
         {
@@ -84,16 +89,17 @@ class Story extends CI_Controller {
                     array_push($story,$query_data["st_".$sequence[$i]]);
                 }
                 array_push($story_location,$this->Newlocation_model->getLocationById(ord(strtoupper($user_name[$i]))-64)->row_array());
+                array_push($story_img,$sequence[$i].'.jpg');
             }
         }
 
         $query_data=$this->Story_Model->sel_fixed_story();
         array_push($story,$query_data['stf_end']);
-
         $data=array(
                 'username'=>$user_name,
                 'story'=>$story,
-                'story_location'=>$story_location
+                'story_location'=>$story_location,
+                'story_img'=>$story_img
             );
         
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
