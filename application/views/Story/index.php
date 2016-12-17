@@ -46,7 +46,7 @@
         <div class="control-group form-group">
           <div class="controls">
             <h1 class="text-center">請輸入你的名字</h1>
-            <input type="text" class="form-control" id="name" name="name" placeholder="例如Alex，請輸入3~8個英文字母" required maxlength="8">
+            <input type="text" class="form-control" id="name" name="name" placeholder="例如Alex，請輸入3~8個英文字母" required maxlength="8" min="3" pattern="[A-Za-z]{3,8}" >
           </div>
         </div>
         <button type="button" id="modal-btn" class="btn btn-primary" style="width:100%;" data-toggle="modal">開始旅程</button>

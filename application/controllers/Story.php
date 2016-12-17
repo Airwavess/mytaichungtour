@@ -28,6 +28,11 @@ class Story extends CI_Controller {
         $this->load->view('Story/my_story',array('name'=>$name ));
         $this->load->view('Story/footer');
     }
+    public function about()
+    {
+        $this->load->view('Story/header');
+        $this->load->view('Story/about');
+    }
     public function my_story()
     {
         $user_name=$_GET['user_name'];
