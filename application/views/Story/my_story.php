@@ -142,7 +142,7 @@
       }
       btn += '<button type="submit" class="btn btn-primary" style="width:48%;margin:5px 1px;" onclick="Next_step()">下一步</button>'
     }else{
-      btn = '<div class="btn btn-primary" style="width:100%;margin:5px 0;color: #FFFFFF;" data-href="http://mytaichungtour.lionfree.net/index.php/Story/userStory?name='+$('#name').text()+'" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fmytaichungtour.lionfree.net%2Findex.php%2FStory%2FuserStory%3Fname%3D'+$('#name').text()+'%23story&amp;src=sdkpreparse"  style="width:100%;margin:5px 0;color: #FFFFFF;display:inline-block;">分享你/妳的故事</a></div><a href="/"  class="btn btn-primary" style="width:100%;margin:5px 0;" >回首頁</a>'
+      btn = '<div class="btn btn-primary" style="width:100%;margin:5px 0;color: #FFFFFF;" data-href="http://mytaichungtour.lionfree.net/index.php/Story/userStory?name='+$('#name').text()+'" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fmytaichungtour.lionfree.net%2Findex.php%2FStory%2FuserStory%3Fname%3D'+$('#name').text()+'%23story&amp;src=sdkpreparse"  style="width:100%;margin:5px 0;color: #FFFFFF;display:inline-block;">分享你/妳的故事</a></div><button type="submit" class="btn btn-primary" style="width:48%;margin:5px 1px;" onclick="Pre_step()">上一步</button><a href="/mytaichungtour/"  class="btn btn-primary" style="width:50%;margin:5px 0;" >回首頁</a>'
     }
     var url = '/mytaichungtour/assets/img/'+story_data.story_img[step];
     document.getElementById('story').innerHTML = '<pre>'+story_data.story[step] + '</pre>' + btn;
