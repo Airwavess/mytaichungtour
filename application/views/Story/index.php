@@ -96,11 +96,9 @@
     ?>
     <div class="col-md-3 col-sm-6">
       <div class="panel panel-default text-center">
-        <div class="panel-heading">
-          <span class="fa-stack fa-5x">
-          <img src="<?=site_url('assets/uploads/location/')?><?="$row->img_path"?>" height="120" width="160"
+        <div style="height:135px;">
+          <img src="<?=base_url('assets/uploads/location/')?><?="$row->img_path"?>" height="100%" width="100%"
            border="0">
-          </span>
         </div>
         <div class="panel-body">
           <!-- 景點名 -->
