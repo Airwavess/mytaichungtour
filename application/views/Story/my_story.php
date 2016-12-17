@@ -122,10 +122,10 @@
   }
 
   function Pre_step() {
-    if (step < MaxStep - 1) {
+    
       step = step - 1;
       renderStory();
-    }
+   
     Totop()
   }
 
