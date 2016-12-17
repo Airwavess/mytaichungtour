@@ -71,7 +71,6 @@
                     <li><a href="#map">查看地圖</a></li>
                     <li><a href="#add">選擇地點</a></li>
                     <li><a href="#route">行程規劃</a></li>
-                    <li><a href="#map">清除路線</a></li>
                 </ul>
                </div> 
             </div>
