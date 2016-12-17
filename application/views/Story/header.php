@@ -50,6 +50,9 @@
           <li>
             <a href="<?=site_url('Schedule')?>">我的行程</a>
           </li>
+          <li>
+            <a href="<?=site_url('Story/about')?>">關於我們</a>
+          </li>
         </ul>
       </div>
       <!-- /.navbar-collapse -->
