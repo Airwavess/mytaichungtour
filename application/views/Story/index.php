@@ -49,20 +49,18 @@
             <input type="text" class="form-control" id="name" name="name" placeholder="例如Alex，請輸入3~8個英文字母" required maxlength="8">
           </div>
         </div>
-        <button type="button" id="modal-btn" class="btn btn-primary" style="width:100%;" data-toggle="modal">創作故事</button>
+        <button type="button" id="modal-btn" class="btn btn-primary" style="width:100%;" data-toggle="modal">開始旅程</button>
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="top: 30vh;">
           <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title text-center" id="myModalLabel">確認你的名字</h3>
-              </div>
-              <div class="modal-body text-center">
-                <h4 id="modal-name"></h4>
-              </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">確認</button>
+                <h3 class="modal-title text-center" id="myModalLabel">Hi,<span id="modal-name"></span></h3>
+                <h3 class="text-center">歡迎來到故事中城</h3>
+                <div class="text-right" style="padding-top: 10px;">
+                  <button type="submit" class="btn btn-primary ">開始</button>
+                </div>
               </div>
             </div>
           </div>

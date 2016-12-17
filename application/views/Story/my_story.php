@@ -41,6 +41,10 @@
           width:93vw;
         }
       }
+      header.carousel {
+        height: 90%;
+        overflow: auto;
+      }
 </style>
 <!-- Page Content -->
 <div class="container">
@@ -143,7 +147,7 @@
     var url = '/mytaichungtour/assets/img/'+story_data.story_img[step];
     document.getElementById('story').innerHTML = '<pre>'+story_data.story[step] + '</pre>' + btn;
     document.getElementById('storyLocation').innerHTML = story_data.story_location[step].lc_name;
-    document.getElementById('story_image').innerHTML =  '<div class="fill" style="background-image:url('+url+')"></div>';
+    document.getElementById('story_image').innerHTML =  '<div class="fill" style="overflow:auto;background-image:url('+url+');background-attachment: fixed;"></div>';
     document.getElementById('header-name').style.display="block";
     document.getElementById('myCarousel').style.display="block";
     document.getElementById('letitbig').style.overflow="";
